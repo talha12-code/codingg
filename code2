@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Shape {
+protected:
+    string color;
+
+public:
+    Shape(string c = "white") : color(c) {}
+
+    void setColor(string c) {
+        color = c;
+    }
+
+    string getColor() {
+        return color;
+    }
+};
+
+class Rectangle : public Shape {
+private:
+    double length;
+    double breadth;
+
+public:
+   
+    Rectangle(double l = 0, double b = 0, string c = "white")
+        : Shape(c), length(l), breadth(b) {}
+
+    void setLength(double l) {
+        length = l;
+    }
+    void setBreadth(double b) {
+        breadth = b;
+    }
+
+    double calculateArea() {
+        return length * breadth;
+    }
+    double calculatePerimeter() {
+        return 2 * (length + breadth);
+    }
+    void display() {
+        cout << "Color: " << getColor() << endl;
+        cout << "Length: " << length << endl;
+        cout << "Breadth: " << breadth << endl;
+        cout << "Area: " << calculateArea() << endl;
+        cout << "Perimeter: " << calculatePerimeter() << endl;
+    }
+};
+
+int main() {
+    Rectangle rect(4, 2, "purple");
+    rect.display();
+
+    return 0;
+}
