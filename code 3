@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Animal {
+protected:
+    string name;
+
+public:
+    Animal(string n = ) : name(n) {}
+    void setName(string n) {
+        name = n;
+    }
+    string getName() {
+        return name;
+    }
+};
+
+class Mammal : public Animal {
+protected:
+    int numberOfLegs;
+public:
+
+    Mammal(string n = , int legs = 0) : Animal(n), numberOfLegs(legs) {}
+    void setNumberOfLegs(int legs) {
+        numberOfLegs = legs;
+    }
+
+    int getNumberOfLegs() {
+        return numberOfLegs;
+    }
+};
+
+class Dog : public Mammal {
+public:
+
+    Dog(string n = "", int legs = 0) : Mammal(n, legs) {}
+
+    void bark() {
+        cout << "Woof! " << getName() << " is barking" << endl;
+    }
+};
+int main() {
+    Dog myDog("comet", 3);
+    myDog.bark();
+    cout << "Name: " << myDog.getName() << endl;
+    cout << "Number of Legs: " << myDog.getNumberOfLegs() << endl;
+
+    return 0;
+}
