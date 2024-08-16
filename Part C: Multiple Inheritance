@@ -1,0 +1,84 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Person {
+protected:
+    string name;
+    string address;
+
+public:
+
+    Person(string n = "", string a = "") : name(n), address(a) {}
+
+    void setName(string n) {
+        name = n;
+    }
+    string getName() {
+        return name;
+    }
+    void setAddress(string a) {
+        address = a;
+    }
+    string getAddress() {
+        return address;
+    }
+};
+
+class Employee {
+protected:
+    int employeeID;
+    double salary;
+
+public:
+    
+    Employee(int id = 0, double s = 0.0) : employeeID(id), salary(s) {}
+
+    void setEmployeeID(int id) {
+        employeeID = id;
+    }
+    int getEmployeeID() {
+        return employeeID;
+    }
+    void setSalary(double s) {
+        salary = s;
+    }
+    double getSalary() {
+        return salary;
+    }
+};
+
+class Teacher : public Person, public Employee {
+private:
+    string subject;
+
+public:
+ 
+    Teacher(string n = "", string a = "", int id = 0, double s = 0.0, string sub = "")
+        : Person(n, a), Employee(id, s), subject(sub) {}
+
+    void setSubject(string sub) {
+        subject = sub;
+    }
+
+    string getSubject() {
+        return subject;
+    }
+
+    void display() {
+        cout << "Name: " << getName() << endl;
+        cout << "Address: " << getAddress() << endl;
+        cout << "Employee ID: " << getEmployeeID() << endl;
+        cout << "Salary: " << getSalary() << endl;
+        cout << "Subject: " << getSubject() << endl;
+    }
+};
+
+int main() {
+    Teacher teacher("mary kate", "124 Main St", 101, 50000.0, "chemistry");
+
+    teacher.display();
+
+    return 0;
+}
